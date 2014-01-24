@@ -1,12 +1,12 @@
 Creación de una página en python-django con javascript y jquery utilizando nuestra plantilla y colores corporativos. Los datos se almacenarán en una base de datos SQLite. 
 Puede estar en español o inglés.
 
-= 1. PÁGINA DE REGISTRO/INICIO DE SESIÓN =
+ 1. PÁGINA DE REGISTRO/INICIO DE SESIÓN 
 
 Será una página de registro/inicio de sesión ESTÁNDAR con nuestro logo y colores corporativos. 
 En la primera página se da la bienvenida al usuario y se le ofrecen las opciones de iniciar la sesión con un nombre de usuario y contraseña o registrarse para crear una cuenta nueva.
 
-== PÁGINA DE INICIO DE SESIÓN ESTÁNDAR ==
+PÁGINA DE INICIO DE SESIÓN ESTÁNDAR 
 
 Se presentará al usuario una ventana de inicio de sesión ESTÁNDAR, con un cuadro para introducir el nombre de usuario, otro para introducir la contraseña, y un botón para registrarse y crear una cuenta nueva que redirigirá al usuario a la ventana de registro.
 
@@ -19,7 +19,7 @@ Si la contraseña no es correcta, se informará al usuario de que no lo es y se 
 
 Si el inicio de sesión se realiza correctamente, el usuario accederá a la página para subir/elegir el archivo.
 
-==VENTANA DE REGISTRO ESTÁNDAR==
+VENTANA DE REGISTRO ESTÁNDAR
 
 Al registrarse para crear una cuenta nueva, se presentará al usuario una ventana de registro ESTÁNDAR en la que podrá introducir su información personal.
 
@@ -37,11 +37,11 @@ Después de iniciar la sesión o registrarse correctamente, el usuario accederá
 Para poder pasar al paso siguiente, el usuario deberá marcar una casilla ESTÁNDAR en la que indica que acepta los términos y condiciones de uso y la política de privacidad ("I accept the terms and conditions, and agree to the privacy policy"). La frase incluirá enlaces a los términos y condiciones y a la política de privacidad.
 
 
-==PÁGINA DE CARGA/SELECCIÓN DE ARCHIVO==
+PÁGINA DE CARGA/SELECCIÓN DE ARCHIVO
 
 En todo momento estará disponible un menú (por ejemplo, en la esquina superior derecha) con las opciones de cerrar la sesión y modificar los detalles de la cuenta, así como la de acceder a su carpeta para ver/borrar los archivos que ya se hayan subido.
 
-==CARGAR O SUBIR ARCHIVO 1==
+CARGAR O SUBIR ARCHIVO 1
 
 El usuario podrá cargar archivos en formato comprimido o sin comprimir (una sugerencia informará al usuario de los formatos admitidos). Este archivo comprimido contendrá siempre un único archivo.
 
@@ -58,7 +58,7 @@ Si el archivo no se descomprime correctamente, se informará al usuario de que l
 Si el usuario hace clic en la opción de intentarlo de nuevo, accederá a la pantalla anterior del proceso (seleccionar y cargar un archivo).
 
 
-==CARGAR O SELECCIONAR UN ARCHIVO 2==
+CARGAR O SELECCIONAR UN ARCHIVO 2
 
 Una vez cargado el primer archivo, se pedirá al usuario que cargue un segundo archivo. Este segundo archivo podrá también estar comprimido o sin comprimir. 
 
@@ -74,7 +74,7 @@ Al igual que antes, el usuario verá un indicador de progreso y, al terminar, re
 
 En todo momento habrá disponible un botón para cancelar la operación.
 
-==VENTANA DE FINALIZACIÓN DEL TIEMPO DE ESPERA (TIMEOUT)==
+VENTANA DE FINALIZACIÓN DEL TIEMPO DE ESPERA (TIMEOUT)
 
 Después de un cierto tiempo de inactividad, se cancelará el proceso y se cerrará la sesión del usuario. Un mensaje indicará que ha finalizado el tiempo de espera de la sesión y le orecerá un enlace o botón para acceder de nuevo a la pantalla de inicio de sesión ("Your session has timed out. Please login again.") .
 
