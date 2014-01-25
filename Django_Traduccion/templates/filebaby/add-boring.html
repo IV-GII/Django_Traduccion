@@ -1,0 +1,29 @@
+{% extends "filebaby/base.html" %}
+
+
+{% block page_title %}Add file (boring version){% endblock %}
+
+
+{% block content %}
+
+
+{{ form.non_field_errors }}
+
+<form action="{% url 'filebaby-add' %}" method="post" enctype="multipart/form-data">
+  <fieldset>
+    <legend>Subir fichero</legend>
+
+    <div class="large-12 columns">
+      <div class="row" id="file_container">
+        {{ form.f.errors }}
+        {{ form.f }}
+      </div>
+    </div>
+
+  </fieldset>
+  <input type="submit" id="submit" class="large button expand" value="Subir">
+  {% csrf_token %}
+</form>
+
+
+{% endblock %}
