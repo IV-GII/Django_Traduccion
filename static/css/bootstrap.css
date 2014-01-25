@@ -24,6 +24,20 @@ html {
 body {
     margin: 0;
 }
+#push{
+    height: 60px;
+}
+.registerForm{
+    width: 60%;
+    float: right;
+}
+.registerImage{
+    border-radius: 5px;
+    box-shadow: 7px 7px 10px #c0c0c0;
+}
+.col-sm-a{
+    text-align: right;
+}
 a {
     background: transparent;
 }
