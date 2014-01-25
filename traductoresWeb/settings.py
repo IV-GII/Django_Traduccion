@@ -189,4 +189,10 @@ SOCIALACCOUNT_PROVIDERS = \
 ()
 
 
-
+#Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'asdf.team.2014@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_TO_EMAIL = 'to email'
+EMAIL_PORT = 587
