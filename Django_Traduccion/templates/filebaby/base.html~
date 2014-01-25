@@ -28,7 +28,7 @@
           <li><a href="/files">File Upload</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/accounts/login">Register</a></li>
+          <li><a href="./accounts/login">Register</a></li>
           <li><button type="button" class="btn btn-sucess navbar-btn" onclick="window.location.href='/accounts/login'">Login</button></li>
           <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
         </ul>
