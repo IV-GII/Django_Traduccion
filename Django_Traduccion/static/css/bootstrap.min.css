@@ -44,6 +44,14 @@ body {
 .col-sm-a{
     text-align: right;
 }
+.upFile{
+    padding: 1em;
+    margin: 1em;
+}
+.upFileButton{
+    margin-left: 1em;
+    margin-top: -0.2em;
+}
 a {
     background: transparent;
 }

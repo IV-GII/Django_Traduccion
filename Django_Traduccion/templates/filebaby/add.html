@@ -16,10 +16,10 @@
   <fieldset>
     <legend>Subir fichero</legend>
 
-    <div class="large-12 columns">
-      <div class="row" id="file_container">
+    <div class="upFile">
+      <div class="">
         {% if form.f.errors %}
-        <input name="f" type="file" id="file" class="error" />
+        <input name="f" type="file" id="file" class="has-error" />
         {% else %}
         <input name="f" type="file" id="file" />
         {% endif %}
@@ -27,7 +27,7 @@
     </div>
 
   </fieldset>
-  <input type="submit" id="submit" class="large button expand" value="Subir">
+  <input type="submit" id="submit" class="btn btn-success" value="Subir">
   {% csrf_token %}
 </form>
 
@@ -61,13 +61,13 @@ function filebaby_select(jQuery) {
   // Build pretty file selector from parts
   var div_text = $('<div class="small-10 columns">');
   if (has_error){
-    var input_txt = $('<input type="text" placeholder="Nombre del fichero" class="error" /><small class="error">{{ form.f.errors.as_text }}</small>');
+    var input_txt = $('<input type="text" placeholder="Nombre del fichero" class="col-md-8" /><small class="error">{{ form.f.errors.as_text }}</small>');
   }
   else{
-    var input_txt = $('<input type="text" placeholder="Nombre del fichero" />');
+    var input_txt = $('<input type="text" placeholder="Nombre del fichero" class="col-md-8"/>');
   }
-  var div_button = $('<div class="small-2 columns">');
-  var button = $('<button type="button" class="prefix">');
+  var div_button = $('<div>');
+  var button = $('<button type="button" class="btn btn-primary upFileButton">');
   var file_container = $('#file_container');
   file_container.addClass('collapse');
   file.after(div_text);
