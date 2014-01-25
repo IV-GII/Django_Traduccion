@@ -17,13 +17,11 @@
     <legend>Subir fichero</legend>
 
     <div class="upFile">
-      <div class="">
-        {% if form.f.errors %}
-        <input name="f" type="file" id="file" class="has-error" />
-        {% else %}
-        <input name="f" type="file" id="file" />
-        {% endif %}
-      </div>
+      {% if form.f.errors %}
+      <input name="f" type="file" id="file" class="has-error" />
+      {% else %}
+      <input name="f" type="file" id="file" />
+      {% endif %}
     </div>
 
   </fieldset>
