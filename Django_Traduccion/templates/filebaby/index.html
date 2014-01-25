@@ -14,11 +14,13 @@
 {% if files %}
 
 <div class="panel">
-  <table>
+  <table class = "table table-striped">
     <thead>
       <tr>
-        <th>Número</th>
+        <th width="7%">Número</th>
         <th>Nombre</th>
+        <th width="6%">Eliminar</th>
+        <th width="6%">Enviar</th>
       </tr>
     </thead>
     <tbody>
@@ -26,10 +28,14 @@
       <tr>
         <td>{{ file.id }}</td>
         <td><a href="{% get_media_prefix %}{{ file.f }}">{{ file.f }}</a></td>
+        <td><button type="button" class="btn btn-link" onclick=""><span class="glyphicon glyphicon-remove"></span></button></td>
+        <td><button type="button" class="btn btn-danger" onclick="">Enviar</button></td>
       </tr>
       {% endfor %}
     </tbody>    
   </table>
+  <div class="push"></div>
+  <button type="button" class="btn btn-success" onclick="window.location.href='/files/add'">Subir otro fichero</button>
 </div>
 
 

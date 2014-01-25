@@ -13,15 +13,13 @@
   <fieldset>
     <legend>Subir fichero</legend>
 
-    <div class="large-12 columns">
-      <div class="row" id="file_container">
-        {{ form.f.errors }}
-        {{ form.f }}
-      </div>
+    <div class="upFile">
+      {{ form.f.errors }}
+      {{ form.f }}
     </div>
 
   </fieldset>
-  <input type="submit" id="submit" class="large button expand" value="Subir">
+  <input type="submit" id="submit" class="btn btn-success" value="Subir">
   {% csrf_token %}
 </form>
 
