@@ -11,6 +11,7 @@
   {% block body %}
   {% include "menu.html" %}
   <div class = 'container'>
+  {% if request.user.is_authenticated %}
     {% if messages %}
     <div class="row">
       <div class="large-12 columns">
@@ -26,18 +27,20 @@
           <a href="#" class="close">&times;</a>
         </div>
         {% endif %}
-
       {% endfor %}
       </div>
     </div>
-    {% endif %}
-
-      
+    {% endif %} 
     <div class="row">
       <div class="large-12 columns">
       {% block content %}{% endblock content %}
       </div>
     </div>
+  {% else %}
+    <div class="push"></div>
+    <p class = "text-center">Please, <a href="/accounts/login">Sign In</a> or <a href="/accounts/signup">Sign Up</a> to use this functionality.</p>
+    <div class="push"></div>
+  {% endif %}
   </div>
 <!--
   <div class="row">
