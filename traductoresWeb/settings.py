@@ -11,6 +11,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Ruta raiz del proyecto
+BASE_DIR=os.path.abspath(os.path.dirname(__name__))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -74,6 +77,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR,STATIC_URL),
 )
 
 # List of finder classes that know how to find static files in
@@ -109,8 +113,6 @@ ROOT_URLCONF = 'traductoresWeb.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'traductoresWeb.wsgi.application'
 
-# Ruta raiz del proyecto
-BASE_DIR=os.path.abspath(os.path.dirname(__name__))
 
 
 TEMPLATE_DIRS = (
@@ -186,6 +188,7 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
+
 SOCIALACCOUNT_PROVIDERS = \
 ()
 
@@ -194,6 +197,6 @@ SOCIALACCOUNT_PROVIDERS = \
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'asdf.team.2014@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'asdf2014'
 DEFAULT_TO_EMAIL = 'to email'
 EMAIL_PORT = 587
