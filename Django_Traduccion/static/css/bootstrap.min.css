@@ -33,11 +33,11 @@ body {
     margin-right: auto;
     width: 850px;
 }
-.registerForm{
+.accountForm{
     width: 60%;
     float: right;
 }
-.registerImage{
+.accountImage{
     border-radius: 5px;
     box-shadow: 7px 7px 10px #c0c0c0;
 }

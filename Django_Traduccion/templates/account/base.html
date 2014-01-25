@@ -3,39 +3,45 @@
 <html>
   <head>
     <title>{% block head_title %}{% endblock %}</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     {% block extra_head %}
     {% endblock %}
   </head>
   <body>
     {% block body %}
-
+    {% include "menu.html" %}
     {% if messages %}
     <div>
       <strong>Messages:</strong>
       <ul>
-	{% for message in messages %}
-	<li>{{message}}</li>
-	{% endfor %}
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
       </ul>
     </div>
     {% endif %}
 
     <div>
-      <strong>Menu:</strong>
+      {% if user.is_authenticated %}
+      <h3>Menu:</h3>
       <ul>
-	{% if user.is_authenticated %}
-	<li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-	<li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-	{% else %}
-	<li><a href="{% url 'account_login' %}">Sign In</a></li>
-	<li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-	{% endif %}
+        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
       </ul>
+      {% endif %}
     </div>
-    {% block content %}
-    {% endblock %}
-    {% endblock %}
-    {% block extra_body %}
-    {% endblock %}
+    <div class = 'container'>
+      <div class='col-sm-4 .visible-lg'>
+          <img class='accountImage' src='/static/images/register.jpg'>
+      </div>
+      <div class='accountForm'>
+        {% block content %}
+        {% endblock %}
+      </div>
+        {% endblock %}
+        {% block extra_body %}
+        {% endblock %}
+    </div>
+    {% include "footer.html" %}
   </body>
 </html>
