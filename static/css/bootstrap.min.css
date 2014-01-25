@@ -24,8 +24,14 @@ html {
 body {
     margin: 0;
 }
-#push{
+.push{
     height: 60px;
+}
+.content{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
 }
 .registerForm{
     width: 60%;
