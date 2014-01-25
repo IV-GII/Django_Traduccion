@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelavent variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/juanda/django/Django_Traduccion/environment"
+VIRTUAL_ENV="/home/juanda/project/Django_Traduccion"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
