@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
       url(r'^accounts/', include('allauth.urls')),
       #url(r'^accounts/profile/', "profile"),
-      url(r'^index/', views.index, name='index'),
-      url(r'^files/', include('filebaby.urls'))
+      url(r'^index$/', views.index, name='index'),
+      url(r'^$', views.index, name='index'),
+      url(r'^files/', include('filebaby.urls')),
+      url(r'^index-add$/', include('filebaby.urls'))
 )
