@@ -29,7 +29,9 @@ sudo chef-solo -c Django_Traduccion/solo.rb -j Django_Traduccion/node.json
 EJECUCIÓN
 =========
 
+```
 python manage.py runserver
+```
 
 
 ACCESO
