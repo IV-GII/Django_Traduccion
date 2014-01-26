@@ -4,6 +4,15 @@ Django_Traduccion
 Aplicación utilizando Django y Bootstrap para empresa de traducción.
 
 
+DESPLEGAR
+=========
+
+```
+sudo apt-get update
+sudo apt-get install git
+sudo git clone -b aprov https://github.com/IV-GII/Django_Traduccion.git
+```
+
 INSTALACIÓN Y EJECUCIÓN
 =======================
 
