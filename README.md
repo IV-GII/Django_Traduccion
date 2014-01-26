@@ -4,39 +4,19 @@ Django_Traduccion
 Aplicación utilizando Django y Bootstrap para empresa de traducción.
 
 
-INSTALACIÓN
-===========
-
-Instalación de Git:
+INSTALACIÓN Y EJECUCIÓN
+=======================
 
 ```
-sudo apt-get install git
-```
-
-Instalación de Chef:
-
-```
-curl -L https://www.opscode.com/chef/install.sh | sudo bash
-```
-
-Desplegar fuentes de la aplicación:
-
-```
-git clone -b aprov https://github.com/IV-GII/Django_Traduccion.git
-```
-
-Instalación de la aplicación:
-
-```
-sudo chef-solo -c Django_Traduccion/solo.rb -j Django_Traduccion/node.json
+sudo Django_Traduccion/INSTALL.sh
 ```
 
 
-EJECUCIÓN
-=========
+EJECUCIÓN SOLO
+==============
 
 ```
-python manage.py runserver
+sudo Django_Traduccion/RUN.SH
 ```
 
 

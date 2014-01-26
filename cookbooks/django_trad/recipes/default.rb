@@ -1,7 +1,14 @@
 package 'python'
+package 'python-django'
+
+#git "/home/django_trad/" do
+#       repository "https://github.com/IV-GII/Django_Traduccion.git"
+#       revision "aprov"
+#       action :sync
+#end
 
 execute "Ejecuta aplicación" do
-  command "python manage.py runserver &"
+  command "python Django_Traduccion/manage.py runserver"
   action :run
 end
 
@@ -26,10 +33,3 @@ end
 #	mode 00754
 #	action :create
 #end
-
-#git "/home/django_trad/" do
-#	repository "https://github.com/IV-GII/Django_Traduccion.git"
-#	revision "aprov"
-#	action :sync
-#end
-
