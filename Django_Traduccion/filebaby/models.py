@@ -2,6 +2,10 @@
 
 import os
 from django.db import models
+from allauth.account.models import EmailAddress
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.template import RequestContext
 
 
 def hashed_uploads_dirs(instance, filename):

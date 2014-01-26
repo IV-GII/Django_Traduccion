@@ -10,7 +10,6 @@ from filebaby.models import FilebabyFile
 from filebaby.forms import FilebabyForm
 
 class FileListView(ListView):
-
     model = FilebabyFile
     queryset = FilebabyFile.objects.order_by('-id')
     context_object_name = "files"
@@ -19,7 +18,6 @@ class FileListView(ListView):
 
 
 class FileAddView(FormView):
-
     form_class = FilebabyForm
     success_url = reverse_lazy('home')
     template_name = "filebaby/add.html"

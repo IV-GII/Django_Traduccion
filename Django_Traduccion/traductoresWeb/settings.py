@@ -14,6 +14,7 @@ MANAGERS = ADMINS
 # Ruta raiz del proyecto
 BASE_DIR=os.path.abspath(os.path.dirname(__name__))
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -40,8 +41,6 @@ TIME_ZONE = 'Europe/Madrid'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'es-es'
 
-MEDIA_URL = '/files/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'userfiles/')
 
 SITE_ID = 1
 
@@ -58,12 +57,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(BASE_DIR, 'userfiles/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/files/'
 
 # Ruta raiz del proyecto
 BASE_DIR=os.path.abspath(os.path.dirname(__name__))
@@ -85,6 +84,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR,'static/'),
+    #os.path.join(BASE_DIR, 'userfiles/'),
 )
 
 # List of finder classes that know how to find static files in
@@ -186,7 +186,8 @@ LOGGING = {
 
 TEMPLATE_CONTEXT_PROCESSORS = (
 	"django.core.context_processors.request",
-	#"django.contrib.auth.context.auth"
+#	"django.contrib.auth.context_processors.auth",
+#	"django.contrib.auth.context.auth",
 	"allauth.account.context_processors.account",
 	"allauth.socialaccount.context_processors.socialaccount",
         "django.core.context_processors.media",
