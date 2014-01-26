@@ -1,5 +1,9 @@
-#package 'git'
 package 'python'
+
+execute "Ejecuta aplicación" do
+  command "python manage.py runserver &"
+  action :run
+end
 
 #group "django_trad" do
 #	system true
