@@ -27,7 +27,7 @@ end
 # unset irrelavent variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/juanda/project/Django_Traduccion"
+set -gx VIRTUAL_ENV "/home/inaki/IVPROJECT/Django_Traduccion"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

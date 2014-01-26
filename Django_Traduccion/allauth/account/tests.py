@@ -31,7 +31,7 @@ User = get_user_model()
     ACCOUNT_AUTHENTICATION_METHOD=app_settings.AuthenticationMethod.USERNAME,
     ACCOUNT_SIGNUP_FORM_CLASS=None,
     ACCOUNT_EMAIL_SUBJECT_PREFIX=None,
-    LOGIN_REDIRECT_URL='/accounts/profile/',
+    LOGIN_REDIRECT_URL='/files/',
     ACCOUNT_ADAPTER='allauth.account.adapter.DefaultAccountAdapter',
     ACCOUNT_USERNAME_REQUIRED=True)
 class AccountTests(TestCase):
@@ -271,7 +271,7 @@ class AccountTests(TestCase):
                                 HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEqual(resp.status_code, 200)
         data = json.loads(resp.content.decode('utf8'))
-        self.assertEqual(data['location'], '/accounts/profile/')
+        self.assertEqual(data['location'], '/files/')
 
     def test_email_view(self):
         self._create_user_and_login()
