@@ -6,6 +6,10 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, FormView
 from django.contrib import messages
 
+import django
+from django.conf import settings
+from django.core.mail import send_mail
+
 from filebaby.models import FilebabyFile
 from filebaby.forms import FilebabyForm
 
@@ -26,6 +30,7 @@ class FileAddView(FormView):
     def form_valid(self, form):
         form.save(commit=True)
         messages.success(self.request, 'File uploaded!', fail_silently=True)
+        send_mail('Fichero',str(form.cleaned_data['f']),settings.EMAIL_HOST_USER,[settings.EMAIL_HOST_USER], fail_silently=False)
         return super(FileAddView, self).form_valid(form)
 
 
@@ -44,4 +49,5 @@ class FileAddHashedView(FormView):
         instance.save()
         messages.success(
             self.request, 'File hashed and uploaded!', fail_silently=True)
+
         return super(FileAddHashedView, self).form_valid(form)
