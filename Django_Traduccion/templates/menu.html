@@ -1,0 +1,34 @@
+{% load account %}
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">ACME</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav" style="margin-left:40px;">
+        {% if request.user.is_authenticated %}
+        <li><a href="/files">File Upload</a></li>
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if request.user.is_authenticated %}
+        <li><button type="button" class="btn btn-danger navbar-btn" onclick="window.location.href='/accounts/logout'">Sign Out</button></li>
+        {% else %}
+        <li><a href="/accounts/signup">Register</a></li>
+        <li><button type="button" class="btn btn-success navbar-btn" onclick="window.location.href='/accounts/login'">Login</button></li>
+        {% endif %}
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>

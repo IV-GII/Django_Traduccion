@@ -16,43 +16,7 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-	  <div class="container">
-
-
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">ACME</a>
-  </div>
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-    <ul class="nav navbar-nav" style="margin-left:40px;">
-	   <li><a href="#">Settings</a></li>
-		<li><a href="/files">File Upload</a></li>
-			 
-	 </ul>
-
- 
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/accounts/signup">Register</a></li>
-      <li><button type="button" class="btn btn-sucess navbar-btn" onclick="window.location.href='/accounts/login'">Login</button></li>
-      <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-    </ul>
-   
-     </div><!-- /.navbar-collapse -->
-   </div>
-  </nav>
-
-    
-
+  {% include "menu.html" %}
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -125,80 +89,6 @@
 				</div>
 			</div>
 	</div>
-	<div class="push"></div>
-	  <!-- footer -->
-	  <footer class="panel-footer" role="navigation">
-			<!-- Margenes a los dos lados -->
-		  <div class="container">
-		   <div class="col-sm-3">
-		     <table class="table table-condensed">
-		       <thead>
-		         <td><h3>Offices</h3></td>
-		       </thead>
-		       <tr>
-		         <td><strong>RM-Soft Translation &amp; Publishing</strong></td>
-		       </tr>
-		       <tr>
-		         <td>Plaza de los Campos 4, 2-D</td>
-		       </tr>
-		       <tr>
-		         <td>Granada 18009 - SPAIN</td>
-		       </tr>
-		     </table>
-		   </div>
-		   <div class="col-sm-3">
-		     <table class="table table-condensed">
-		       <thead>
-		         <td><h3>Join Us</h3></td>
-		       </thead>
-		       <tr>
-		         <td>freelancers.hr@rm-soft.com</td>
-		       </tr>
-		       <tr>
-		         <td>agencies.hr@rm-soft.com</td>
-		       </tr>
-		       <tr>
-		         <td>openings.hr@rm-soft.com</td>
-		       </tr>
-		     </table>
-		   </div>
-		   <div class="col-sm-3">
-		     <table class="table table-condensed">
-		       <thead>
-		         <td><h3>Say Hello!</h3></td>
-		       </thead>
-		       <tr>
-		         <td>+34 958 215 032</td>
-		       </tr>
-		       <tr>
-		         <td>+34 958 215 284</td>
-		       </tr>
-		       <tr>
-		         <td>info@rm-soft.com</td>
-		       </tr>
-		     </table>
-		   </div>
-		   <div class="col-sm-3">
-		     <table class="table table-condensed">
-		       <thead>
-		         <td><h3>Stop By</h3></td>
-		       </thead>
-		       <tr>
-		         <td>Monday - Friday 8:30 - 17:30</td>
-		       </tr>
-		       <tr>
-		         <td>Saturday: Closed</td>
-		       </tr>
-		       <tr>
-		         <td>Sunday: Closed</td>
-		       </tr>
-		     </table>
-		   </div>
-		   <div>
-		   <p>Licencia y esas cosas</p>
-		   </div>
-		 </div><!-- ./container -->
-	  </footer>
-		 <!-- ./footer -->
+  {% include "footer.html" %}
   </body>
 </html>
