@@ -1,0 +1,14 @@
+{
+    "django_trad": {
+	"name"		: "RM-SOFT",
+        "version"	: "1.0",
+	"developers"	: "ASDF TEAM",
+	"language"	: "Python",
+	"framework"	: "Django",
+        "port"      	: "8000"
+    },
+
+    "run_list": [
+        "recipe[django_trad]"
+    ]
+}

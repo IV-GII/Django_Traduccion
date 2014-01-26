@@ -7,6 +7,12 @@ Aplicación utilizando Django y Bootstrap para empresa de traducción.
 INSTALACIÓN
 ===========
 
+Instalación de Git:
+
+```
+sudo apt-get install git
+```
+
 Instalación de Chef:
 
 ```
