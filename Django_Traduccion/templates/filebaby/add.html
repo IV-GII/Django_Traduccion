@@ -12,7 +12,18 @@
 </div>
 {% endif %}
 
-<form action="{% url 'filebaby-add' %}" method="post" enctype="multipart/form-data">
+<script>
+  function extract() {
+	  
+	  if(document.getElementById('file').value.split('.').pop() == "zip" && confirm("¿Quieres descomprimir el fichero?")){
+		  document.getElementById('extractit').value="yes";
+	  }
+	  
+	  return true;
+  }
+</script>
+
+<form action="{% url 'filebaby-add' %}" method="post" onsubmit="return extract()" enctype="multipart/form-data">
   <fieldset>
     <legend>Subir fichero</legend>
 
@@ -22,6 +33,7 @@
       {% else %}
       <input name="f" type="file" id="file" />
       {% endif %}
+      <input type="text" name="extractit" id="extractit" value="no" hidden></input>
     </div>
 
   </fieldset>

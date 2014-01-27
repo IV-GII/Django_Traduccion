@@ -20,16 +20,25 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 
 import os
+import sys, zipfile, os.path
+from django.core.files import File
+
+
+
+def deleteFromOS(filepath):
+    os.remove(filepath)
+    dirpath=os.path.dirname(filepath)
+    if dirpath != settings.MEDIA_ROOT and settings.MEDIA_ROOT in dirpath and not os.listdir(dirpath):
+        os.rmdir(dirpath)
 
 class DeleteFileView(TemplateView):
     template_name = "filebaby/index.html"
     def get(self, request, *args, **kwargs):
         data={}
-        file_o=FilebabyFile.objects.get(md5=request.GET['md5'])
-        os.remove(file_o.f.path)
+        file_o=FilebabyFile.objects.get(md5=request.GET['md5'], id=request.GET['id'])
+        deleteFromOS(file_o.f.path)
         file_o.delete()
-        return render_to_response(self.template_name, data, context_instance=RequestContext(request))
-        
+        return render_to_response(self.template_name, data, context_instance=RequestContext(request)) 
 
 
 class FileSendView(TemplateView):
@@ -56,7 +65,7 @@ class FileListView(ListView):
     model = FilebabyFile
     context_object_name = "files"
     template_name = "filebaby/index.html"
-    paginate_by = 5
+    paginate_by = 20
 
     def get_queryset(self):
         if self.request.user.is_superuser:
@@ -91,7 +100,36 @@ class FileAddHashedView(FormView):
         instance.md5 = hash_value
         instance.username = self.request.user.username
         instance.save()
-        messages.success(
-            self.request, 'File hashed and uploaded!', fail_silently=True)
+
+        # descompresion optativa
+        if instance.f.name.endswith(".zip") and self.request.POST['extractit'] == "yes":
+            # Convert file and dir into absolute paths
+            fullpath = os.path.join(settings.MEDIA_ROOT,instance.f.name)
+            dirname = os.path.dirname(settings.MEDIA_ROOT)
+            
+            # Get a real Python file handle on the uploaded file
+            fullpathhandle = open(fullpath, 'r') 
+
+            # Unzip the file, creating subdirectories as needed
+            zfobj = zipfile.ZipFile(fullpathhandle)
+            for name in zfobj.namelist():
+                if name.endswith('/'):
+                    try: # Don't try to create a directory if exists
+                        os.mkdir(os.path.join(dirname, name))
+                    except:
+                        pass
+                else:
+                    outfile = File(open(os.path.join(dirname, name), 'wb+'))
+                    outfile.write(zfobj.read(name))
+                    file_o=FilebabyFile(f=name, username=self.request.user.username, md5=hashlib.md5(outfile.read()).hexdigest())
+                    file_o.save()
+                    outfile.close()
+
+            deleteFromOS(fullpath)
+            instance.delete()
+            messages.success(self.request, 'File uploaded and unziped!', fail_silently=True)
+
+        else:
+            messages.success(self.request, 'File uploaded!', fail_silently=True)
 
         return super(FileAddHashedView, self).form_valid(form)

@@ -32,7 +32,8 @@
 		  type: "GET",
 		  url: "/files/delete/",
 		  data: {
-			  md5:$('#file' + id).val()
+			  md5:$('#file' + id).val(),
+			  id:id
 			  },
 		  success: function(data) {
 			  var elem = document.getElementById('column' + id);
