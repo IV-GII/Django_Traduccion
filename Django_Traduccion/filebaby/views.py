@@ -39,6 +39,8 @@ class FileSendView(TemplateView):
         file_o=FilebabyFile.objects.get(md5=request.GET['md5'])
         message='El usuario ' + request.user.username +'('+ request.user.email +') desea que se traduzca lo siguiente:\n\nFichero ' + file_o.f.name + ": " + request.META['HTTP_HOST'] + "/files/download/?file=" + request.GET['md5']
         send_mail('Fichero' + file_o.f.name, message, settings.EMAIL_HOST_USER,[settings.EMAIL_HOST_USER], fail_silently=False)
+        file_o.is_sent=is_sent=True
+        file_o.save()
         return render_to_response(self.template_name, data, context_instance=RequestContext(request))
 
 class FileDownloadView(View):
