@@ -10,6 +10,41 @@
 
 <h1>Ficheros subidos</h1>
 
+<script>
+  function sendtotrad(id) {
+	  $.ajax({
+		  type: "GET",
+		  url: "/files/send/",
+		  data: {
+			  md5:$('#file' + id).val()
+			  },
+		  success: function(data) {
+			  alert("El fichero se ha enviado correctamente");
+			  },
+		  error: function(xhr, textStatus, errorThrown) {
+			  alert("Se ha producido un error y no se ha podido enviar el fichero");
+			  }
+    });
+  }
+  
+  function deletefile(id) {
+	  $.ajax({
+		  type: "GET",
+		  url: "/files/delete/",
+		  data: {
+			  md5:$('#file' + id).val()
+			  },
+		  success: function(data) {
+			  var elem = document.getElementById('column' + id);
+			  elem.parentNode.removeChild(elem);
+			  },
+		  error: function(xhr, textStatus, errorThrown) {
+			  alert("Se ha producido un error y no se ha podido eliminar el fichero");
+			  }
+    });
+  }
+</script>
+
 
 {% if files %}
 
@@ -25,11 +60,12 @@
     </thead>
     <tbody>
       {% for file in files %}
-      <tr>
+      <input type="text" id="file{{ file.id }}" value="{{ file.md5 }}" hidden></input>
+      <tr id="column{{ file.id }}">
         <td>{{ file.id }}</td>
-        <td><a href="{% get_media_prefix %}{{ file.f }}">{{ file.f }}</a></td>
-        <td><button type="button" class="btn btn-link" onclick=""><span class="glyphicon glyphicon-remove"></span></button></td>
-        <td><button type="button" class="btn btn-danger" onclick="">Enviar</button></td>
+        <td><a href="{% get_media_prefix %}download/?file={{ file.md5 }}">{{ file.f }}</a></td>
+        <td><button type="button" class="btn btn-link" onclick="deletefile('{{ file.id }}')"><span class="glyphicon glyphicon-remove"></span></button></td>
+        <td><button type="button" class="btn btn-danger" onclick="sendtotrad('{{ file.id }}')">Enviar</button></td>
       </tr>
       {% endfor %}
     </tbody>    

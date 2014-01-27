@@ -14,8 +14,14 @@ def hashed_uploads_dirs(instance, filename):
 
 
 class FilebabyFile(models.Model):
+#    username = ''
     """This holds a single user uploaded file"""
+#    def __init__(self, username):
+#        self.username = username
+#        print("??????????????????????")
     f = models.FileField(upload_to='.')
     #f = models.FileField(upload_to='%Y/%m/%d')  # Date-based directories
     #f = models.FileField(upload_to=hashed_uploads_dirs)  # Callback defined
     md5 = models.CharField(max_length=32)
+    username = models.CharField(max_length=32)
+    is_sent = models.BooleanField(default=False)

@@ -9,4 +9,4 @@ class FilebabyForm(forms.ModelForm):
     """Upload files with this form"""
     class Meta:
         model = FilebabyFile
-        exclude = ('md5',)
+        exclude = ('md5','username','is_sent',)
