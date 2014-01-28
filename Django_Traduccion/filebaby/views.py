@@ -31,6 +31,45 @@ def deleteFromOS(filepath):
     if dirpath != settings.MEDIA_ROOT and settings.MEDIA_ROOT in dirpath and not os.listdir(dirpath):
         os.rmdir(dirpath)
 
+
+def extractFile(fileObject, request):
+    if fileObject.f.name.endswith(".zip"):
+        # Convert file and dir into absolute paths
+        fullpath = os.path.join(settings.MEDIA_ROOT,fileObject.f.name)
+        dirname = os.path.dirname(settings.MEDIA_ROOT)
+
+        # Get a real Python file handle on the uploaded file
+        fullpathhandle = open(fullpath, 'r')
+
+        # Unzip the file, creating subdirectories as needed
+        zfobj = zipfile.ZipFile(fullpathhandle)
+        for name in zfobj.namelist():
+            if name.endswith('/'):
+                try: # Don't try to create a directory if exists
+                    os.mkdir(os.path.join(dirname, name))
+                except:
+                    pass
+            else:
+                outfile = File(open(os.path.join(dirname, name), 'wb+'))
+                outfile.write(zfobj.read(name))
+                file_o=FilebabyFile(f=name, username=request.user.username, md5=hashlib.md5(outfile.read()).hexdigest())
+                file_o.save()
+                outfile.close()
+
+        deleteFromOS(fullpath)
+        fileObject.delete()
+        return True
+    return False
+
+
+class ExtractFileView(TemplateView):
+    template_name = "filebaby/index.html"
+    def get(self, request, *args, **kwargs):
+        extractFile(FilebabyFile.objects.get(md5=request.GET['md5'], id=request.GET['id']), request)
+        data={}
+#        data={'files': FilebabyFile.objects.all()}
+        return render_to_response(self.template_name, data, context_instance=RequestContext(request)) 
+
 class DeleteFileView(TemplateView):
     template_name = "filebaby/index.html"
     def get(self, request, *args, **kwargs):
@@ -102,31 +141,7 @@ class FileAddHashedView(FormView):
         instance.save()
 
         # descompresion optativa
-        if instance.f.name.endswith(".zip") and self.request.POST['extractit'] == "yes":
-            # Convert file and dir into absolute paths
-            fullpath = os.path.join(settings.MEDIA_ROOT,instance.f.name)
-            dirname = os.path.dirname(settings.MEDIA_ROOT)
-            
-            # Get a real Python file handle on the uploaded file
-            fullpathhandle = open(fullpath, 'r') 
-
-            # Unzip the file, creating subdirectories as needed
-            zfobj = zipfile.ZipFile(fullpathhandle)
-            for name in zfobj.namelist():
-                if name.endswith('/'):
-                    try: # Don't try to create a directory if exists
-                        os.mkdir(os.path.join(dirname, name))
-                    except:
-                        pass
-                else:
-                    outfile = File(open(os.path.join(dirname, name), 'wb+'))
-                    outfile.write(zfobj.read(name))
-                    file_o=FilebabyFile(f=name, username=self.request.user.username, md5=hashlib.md5(outfile.read()).hexdigest())
-                    file_o.save()
-                    outfile.close()
-
-            deleteFromOS(fullpath)
-            instance.delete()
+        if self.request.POST['extractit'] == "yes" and extractFile(instance, self.request):
             messages.success(self.request, 'File uploaded and unziped!', fail_silently=True)
 
         else:

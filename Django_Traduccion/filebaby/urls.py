@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.conf import settings
 
-from filebaby.views import FileListView, FileAddView, FileAddHashedView, FileDownloadView, FileSendView, DeleteFileView
+from filebaby.views import FileListView, FileAddView, FileAddHashedView, FileDownloadView, FileSendView, DeleteFileView, ExtractFileView
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     url(r'^download/(.*)', FileDownloadView.as_view(), name='home'),
     url(r'^send/(.*)', FileSendView.as_view(), name='home'),
     url(r'^delete/(.*)', DeleteFileView.as_view(), name='home'),
+    url(r'^extract/(.*)', ExtractFileView.as_view(), name='home'),
 #    url(r'^download/(\w)$', FileDownloadView.as_view(), name='home'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
