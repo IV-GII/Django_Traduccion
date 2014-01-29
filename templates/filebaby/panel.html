@@ -1,16 +1,3 @@
-{% extends "filebaby/base.html" %}
-{% load static %}
-
-
-{% block page_title %}Home{% endblock %}
-
-
-{% block content %}
-
-
-<h1>Ficheros subidos</h1>
-{% if files %}
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="/static/js/dropdown.min.js"></script>
 <script>
@@ -57,7 +44,8 @@
 			  id:id
 			  },
 		  success: function(data) {
-			  window.location.reload()
+			  var elem = document.getElementById('column' + id);
+			  elem.parentNode.removeChild(elem);
 			  },
 		  error: function(xhr, textStatus, errorThrown) {
 			  alert("Se ha producido un error y no se ha podido descomprimir/eliminar el fichero");
@@ -106,45 +94,3 @@
   <div class="push"></div>
   <button type="button" class="btn btn-success" onclick="window.location.href='/files/add'">Subir otro fichero</button>
 </div>
-
-{% if page_obj.has_other_pages %}
-<div class="pagination-centered">
-  <ul class="pagination">
-    {% if paginator.has_previous %}
-    <li class="arrow"><a href="?page={{ paginator.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-    <li class="arrow unavailable"><a href="">&laquo;</a></li>
-    {% endif %}
-    {% for pg in paginator.page_range %}
-      {% if page_obj.number == pg %}
-        <li class="current"><a href="?page={{ pg }}">{{ pg }}</a></li>
-      {% else %}
-        <li><a href="?page={{ pg }}">{{ pg }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if paginator.has_next %}
-    <li class="arrow"><a href="?page={{ paginator.next_page_number }}">&raquo;</a></li>
-    {% else %}
-    <li class="arrow unavailable"><a href="">&raquo;</a></li>
-    {% endif %}
-  </ul>
-</div>
-{% endif %}
-
-
-{% else %}
-
-
-  <!--                        -->
-  <!-- Your database is empty -->
-  <!--                        -->
-
-<div class="panel">
-  <p>No files found &nbsp;&nbsp; :(</p>
-  <p>(hint: Añadir un <a href="{% url 'filebaby-add' %}" title="Subir fichero">file</a>)</p>
-</div>
-
-{% endif %}
-
-
-{% endblock %}
