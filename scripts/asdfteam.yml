@@ -1,0 +1,32 @@
+---
+- hosts: asdfteam
+  sudo: yes
+  remote_user: asdfteam
+  tasks:
+    - name: Actualizar lista de paquetes de los repositorios
+      apt: update_cache=yes
+    - name: Instalar Git
+      apt: name=git state=present
+    - name: Instalar Python
+      apt: name=python state=present
+    - name: Instalar Wget
+      apt: name=wget state=present
+    - name: Descargar Django
+      command: wget https://www.djangoproject.com/m/releases/1.6/Django-1.6.1.tar.gz 
+               creates=/usr/local/lib/python2.7/dist-packages/django
+    - name: Descomprimir Django
+      command: tar xzf Django-1.6.1.tar.gz
+               creates=/usr/local/lib/python2.7/dist-packages/django
+    - name: Instalar Django
+      command: python Django-1.6.1/setup.py install
+               creates=/usr/local/lib/python2.7/dist-packages/django
+    - name: Desplegar fuentes de la aplicación
+      git: repo=https://github.com/IV-GII/Django_Traduccion.git
+           dest=/home/asdfteam/django_trad
+           version=prod
+    - name: Cambiar propietario de la carpeta de la aplicacion
+      command: chown -R asdfteam:asdfteam /home/asdfteam/django_trad
+    - name: Desplegar aplicación
+      command: chdir=/home/asdfteam/django_trad python manage.py runserver 0.0.0.0:8000 &
+      async: 45
+      poll: 0
