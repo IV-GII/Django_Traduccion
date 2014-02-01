@@ -340,15 +340,6 @@ Los elementos más importantes que hemos utilizado a la hora de hacer un buen di
 * Un [Grid System](http://getbootstrap.com/css/#grid): dividimos la página web en tres columnas y mostramos los principales responsables de la empresa.
 * Un [Panel](http://getbootstrap.com/components/#panels): al final de la página en modo footer para mostrar información sobre la empresa de traducción. 
 
-**Django** es un framework web de código abierto escrito en Python que permite construir aplicaciones web de manera rápida y con poco código. Inicialmente fue desarrollado para gestionar aplicaciones web de páginas orientadas a noticias de World Online, pero más tarde se liberó bajo licencia BSD. **Django** se centra en automatizar todo lo posible y se adhiere al principio DRY (Don't Repeat Yourself). 
-
-Para la realización de nuestra aplicación nos hemos basado básicamente en los siguientes paquetes de **Django**:
-
-* Allauth:
-* Filebaby: 
-
-[Queda explicar toda esta parte de Django ya que yo no la tengo muy clara puesto que apenas la toqué]
- 
 ### Explicación aplicación
 
 [Hacer un pequeño "manual" en plan ejemplo de uso de la aplicación web.]
