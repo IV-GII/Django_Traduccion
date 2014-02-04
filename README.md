@@ -351,27 +351,25 @@ Para la realización de nuestra aplicación nos hemos basado básicamente en los
  
 ### Explicación aplicación
 
-[Hacer un pequeño "manual" en plan ejemplo de uso de la aplicación web.]
-
 Inicialmente, accedemos a la dirección [web](asdfteam.cloudapp.net) como se muestra en la siguiente captura:
 
 ![p04s04_img11](imagenes/p04s04_img11.png)
  
-Como podemos observar, la página principal, nos muestra la información de la empresa y a parte, nos da la opción de logearnos con una cuenta de un usuario ya existente o bien de registrarnos para poder acceder a los contenidos de la página.
+Como podemos observar, la página principal, nos muestra la información de la empresa y a parte, nos da la opción de loguearnos con una cuenta de un usuario ya existente o bien de registrarnos para poder acceder a los contenidos de la página.
 
-Si no estamos registrados, prodecemos a registrarno pulsando el botón **Register** el cual nos llevará a otra página donde encontraremos un pequeño formulario de ingreso en el cual se nos pide nombre de usuario, contraseña y correo principalmente.
+Si no estamos registrados, prodecemos a registrarnos pulsando el botón **Register** el cual nos llevará a otra página donde encontraremos un pequeño formulario de ingreso en el cual se nos pide nombre de usuario, contraseña y correo principalmente.
 
 ![p04s04_img12](imagenes/p04s04_img12.png)
 
-Si estamos registrados basta con logearnos y acceder a la página, si olvidamos nuestra contraseña se nos da la opción de por medio de un formulario en el que se inserta nuestro correo, restablecer la contraseña.
+Si estamos registrados basta con loguearnos y acceder a la página. Si olvidamos nuestra contraseña se nos da la opción de por medio de un formulario en el que se inserta nuestro correo, restablecer la contraseña.
 
-![p04s04_img19](imagenes/p04s04_img119.png)
+![p04s04_img19](imagenes/p04s04_img19.png)
 
 Una vez realizado lo anterior, nos lleva a la página principal donde se nos da la bienvenida seguido de nuestro nombre de usuario y la posiblilidad de cerrar sesión (arriba a la derecha) y la opción de subir ficheros (arriba a la izquierda).
 
 ![p04s04_img13](imagenes/p04s04_img13.png)
 
-Si le pulsamos a la opción de subir ficheros, nos sale que no hay ningún fichero subido y nos da la posibilidad de subir alguno como muestran las siguientes capturas:
+Si le pulsamos a la opción de subir ficheros, nos sale que no hay ningún fichero subido si no somos el administrador, que en ese caso veríamos todos los ficheros de todos los usuarios registrados; y nos da la posibilidad de subir alguno como muestran las siguientes capturas:
 
 ![p04s04_img14](imagenes/p04s04_img14.png)
 
