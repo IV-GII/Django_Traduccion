@@ -352,3 +352,45 @@ Para la realización de nuestra aplicación nos hemos basado básicamente en los
 ### Explicación aplicación
 
 [Hacer un pequeño "manual" en plan ejemplo de uso de la aplicación web.]
+
+Inicialmente, accedemos a la dirección [web](asdfteam.cloudapp.net) como se muestra en la siguiente captura:
+
+![p04s04_img11](imagenes/p04s04_img11.png)
+ 
+Como podemos observar, la página principal, nos muestra la información de la empresa y a parte, nos da la opción de logearnos con una cuenta de un usuario ya existente o bien de registrarnos para poder acceder a los contenidos de la página.
+
+Si no estamos registrados, prodecemos a registrarno pulsando el botón **Register** el cual nos llevará a otra página donde encontraremos un pequeño formulario de ingreso en el cual se nos pide nombre de usuario, contraseña y correo principalmente.
+
+![p04s04_img12](imagenes/p04s04_img12.png)
+
+Si estamos registrados basta con logearnos y acceder a la página, si olvidamos nuestra contraseña se nos da la opción de por medio de un formulario en el que se inserta nuestro correo, restablecer la contraseña.
+
+![p04s04_img19](imagenes/p04s04_img119.png)
+
+Una vez realizado lo anterior, nos lleva a la página principal donde se nos da la bienvenida seguido de nuestro nombre de usuario y la posiblilidad de cerrar sesión (arriba a la derecha) y la opción de subir ficheros (arriba a la izquierda).
+
+![p04s04_img13](imagenes/p04s04_img13.png)
+
+Si le pulsamos a la opción de subir ficheros, nos sale que no hay ningún fichero subido y nos da la posibilidad de subir alguno como muestran las siguientes capturas:
+
+![p04s04_img14](imagenes/p04s04_img14.png)
+
+![p04s04_img15](imagenes/p04s04_img15.png)
+
+Una vez subido el archivo, se nos presentan tres opciones:
+
+* Eliminar el fichero subido.
+* Enviarlo para su traducción.
+* Descargar el fichero.
+
+![p04s04_img16](imagenes/p04s04_img16.png)
+
+Tras realizar alguna de las opciones anteriores se nos mostrará un mensaje por pantalla. Por ejemplo, si mandamos el fichero a traducir nos mostrará lo siguiente:
+
+ ![p04s04_img17](imagenes/p04s04_img17.png)
+
+Cuando terminemos el trabajo y decidamos abandonar la página, solo basta con pulsar **Sign Out** y se nos mostrará en pantalla si estamos seguros de cerrar la sesión.
+
+![p04s04_img18](imagenes/p04s04_img18.png)
+
+
