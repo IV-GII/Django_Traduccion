@@ -347,7 +347,52 @@ Para la realización de nuestra aplicación nos hemos basado básicamente en los
 * Allauth:
 * Filebaby: 
 
-[Queda explicar toda esta parte de Django ya que yo no la tengo muy clara puesto que apenas la toqué]
+***Allauth*** es un package de Django que se usa para gestionar el registro y autenticación del usuario. Para su uso en esta aplicación lo hemos configurado de la siguiente forma:
+
+* Hemos añadido en ***settings.py*** lo siguiente:
+* En TEMPLATES_CONTEXT_PROCESSORS:
+
+
+```
+    "django.core.context_processors.request",
+	"allauth.account.context_processors.account",
+	"allauth.socialaccount.context_processors.socialaccount",
+```
+  
+  * Creamos AUTHENTICATION_BACKENDS y añadimos:
+  
+
+```
+    "django.contrib.auth.backends.ModelBackend",
+	"allauth.account.auth_backends.AuthenticationBackend",
+```
+
+
+  * Añadimos en INSTALLED_APPS:
+
+```
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+``` 
+  
+  * Creamos SOCIALACCOUNT_PROVIDERS y lo dejamos vacío. Tanto esto como todo lo que tiene que ver con socialaccount en la configuración están en el proyecto para una posible ampliación en la que el usuario podría registrarse en la aplicación con su perfil de alguna red social.
+  
+
+* Modificamos ***urls.py*** para definir las direcciones a las que se redigirá durante el proceso de registro y autenticación:
+
+```
+      url(r'^accounts/profile',views.index, name='index'),
+      url(r'^accounts/', include('allauth.account.urls')),
+```
+
+
+
+
+
+
+
+[Queda explicar Filebaby]
  
 ### Explicación aplicación
 
