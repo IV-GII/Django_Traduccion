@@ -347,8 +347,7 @@ Para la realización de nuestra aplicación nos hemos basado básicamente en los
 * Allauth:
 * Filebaby: 
 
-***Allauth*** es un package de Django que se usa para gestionar el registro y autenticación del usuario. En lo que a gestión de registro se refiere AllAuth nos permite creación de cuentas mediante un formulario simple, recuperación de contraseñas perdidas mediante envío a la dirección de correo proporcionada en el registro y logueo de usuarios. Las contraseñas proporcionadas en el registro no se guardan en texto plano si no que se genera un hash que es el que se gestiona para su almacenamiento por lo que sólo el usuario lo conoce evitando así usos fraudulentos de los datos de usuarios.
-Para su uso en esta aplicación lo hemos configurado de la siguiente forma:
+***Allauth*** es un package de Django que se usa para gestionar el registro y autenticación del usuario. En lo que a gestión de registro se refiere AllAuth nos permite creación de cuentas mediante un formulario simple enviando correo de verificación a la cuenta proporcionada para que no se creen cuentas de usuarios ilegítimos, recuperación de contraseñas perdidas mediante envío a la dirección de correo proporcionada en el registro y logueo de usuarios. Las contraseñas proporcionadas en el registro no se guardan en texto plano si no que se genera un hash que es el que se gestiona para su almacenamiento por lo que sólo el usuario conocerá el password evitando así usos fraudulentos de los datos de usuarios. Para su uso en esta aplicación lo hemos configurado de la siguiente forma:
 
 * Hemos añadido en ***settings.py*** lo siguiente:
 * En TEMPLATES_CONTEXT_PROCESSORS:
