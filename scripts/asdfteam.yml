@@ -26,7 +26,10 @@
            version=prod
     - name: Cambiar propietario de la carpeta de la aplicacion
       command: chown -R asdfteam:asdfteam /home/asdfteam/django_trad
-    - name: Desplegar aplicación
-      command: chdir=/home/asdfteam/django_trad python manage.py runserver 0.0.0.0:8000 &
-      async: 45
-      poll: 0
+    - name: Crear servicio upstart
+      template: src=scripts/trad.conf dest=/etc/init/trad.conf owner=root group=root mode=0644
+    - name: Iniciar aplicación
+      notify: restart trad
+  handlers:
+    - name: restart trad
+      service: name=trad state=restarted
