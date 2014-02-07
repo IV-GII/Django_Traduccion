@@ -27,9 +27,6 @@
     - name: Cambiar propietario de la carpeta de la aplicacion
       command: chown -R asdfteam:asdfteam /home/asdfteam/django_trad
     - name: Crear servicio upstart
-      template: src=/home/asdfteam/django_trad/trad.conf dest=/etc/init/trad.conf owner=root group=root mode=0644
+      template: src=trad.conf dest=/etc/init/trad.conf owner=root group=root mode=0644
     - name: Iniciar aplicación
-      notify: restart trad
-  handlers:
-    - name: restart trad
       service: name=trad state=restarted
