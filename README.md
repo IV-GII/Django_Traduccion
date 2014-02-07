@@ -255,11 +255,14 @@ Como también tenemos que realizar tareas de instalación, indicamos que la acci
 
 La aplicación usa una base de datos para la gestión de los registros de los usuarios, así que es necesario que el usuario local tenga permisos de escritura para aplicar los cambios que se produzcan en dicha base de datos, además como no es normal que una aplicación de usuario pertenezca al usuario **root**, cambiamos el propietario de la estructura de directorios y archivos de la aplicación al usuario **asdfteam** (`chown -R asdfteam:asdfteam /home/asdfteam/django_trad`).
 
-La parte final es para la ejecución automática de la aplicación una vez la máquina esté aprovisionada, situados en el directorio de la aplicación, la ejecutamos indicando la dirección IP 0.0.0.0 (para que pueda ser accedida remotamente) y el puerto 8000 (por motivos de seguridad, para no usar el típico puerto 80). Para que la aplicación pueda ejecutarse desde Ansible es necesario que se haga en modo asíncrono (`async: 45`, hemos dejado el tiempo por defecto), en caso contrario nunca recibirá la confirmación de ejecución y el despliegue nunca finaliza correctamente; por eso mismo, no es necesario esperar un tiempo de sondeo, así que lo ponemos a 0 (`poll: 0`).
+La parte final es para la ejecución automática de la aplicación una vez la máquina esté aprovisionada, la forma más simple de ejecutar nuestra aplicación es convirtiéndola en un servicio **Upstart**; así mediante `service` podríamos iniciar, detener o reiniciar nuestro programa sin complicación. Para poder convertir nuestra aplicación en un servicio **Upstart** necesitamos crear un script de funcionamiento upstart, en el que básicamente introduciremos los comportamientos que podremos gestionar del programa como servicio. Este script lo tenemos que indicar con `template`, indicando con `src` la ruta del script en el ordenador desde el que estamos aprovisionando remotamente y con `dest` la ruta a donde se copiará remotamente en el servidor aprovisionado, para que funcione correctamente le asignamos como propietario y grupo `root` con permisos de lectura y escritura para él y solo lectura para grupo y otros.
+
+Ahora simplemente deberíamos indicar con `service` el nombre del servicio (`name=trad`) y que sea reiniciado (`state=restarted`), para que la aplicación arranque y podamos comenzar a utilizarla.
 
 * **asdfteam.yml**:
 
 ```
+---
 ---
 - hosts: asdfteam
   sudo: yes
@@ -288,13 +291,29 @@ La parte final es para la ejecución automática de la aplicación una vez la m�
            version=prod
     - name: Cambiar propietario de la carpeta de la aplicacion
       command: chown -R asdfteam:asdfteam /home/asdfteam/django_trad
-    - name: Desplegar aplicación
-      command: chdir=/home/asdfteam/django_trad python manage.py runserver 0.0.0.0:8000 &
-      async: 45
-      poll: 0
+    - name: Crear servicio upstart
+      template: src=trad.conf dest=/etc/init/trad.conf owner=root group=root mode=0644
+    - name: Iniciar aplicación
+      service: name=trad state=restarted
 ```
 
-Ahora simplemente tenemos que hacer que Ansible ejecute el libro de jugadas que acabamos de describir.
+Como apunte, nuestro script upstart básicamente lo que hará primero es detener la ejecución del servicio en todos los niveles de ejecución multiusuarios típicos, hacer respawn ante cualquier posible error que se haya producido, y por último dentro de una sección `script`, introducimos los comandos necesarios para ejecutar la aplicación; en nuestro caso, solo hemos puesto situarnos en el directorio de la aplicación y ejecutar con Python el script de arranque **manage.py** con la opción **runserver** con una dirección **0.0.0.0** (para ser accesible desde el exterior) y un puerto **8000**.
+
+* **trad.conf**:
+
+```
+stop on runlevel [!2345]
+
+# Reiniciamos si se para
+respawn
+
+script
+    cd /home/asdfteam/django_trad
+    python manage.py runserver 0.0.0.0:8000
+end script
+```
+
+Solo tendremos que hacer que Ansible ejecute el libro de jugadas que acabamos de describir.
 
 ```
 ansible-playbook asdfteam.yml
@@ -302,7 +321,12 @@ ansible-playbook asdfteam.yml
 
 ![p04s04_img08](imagenes/p04s04_img08.png)
 
-Para poder probar la aplicación, primero necesitamos añadir un extremo a la máquina virtual que nos permita conectarnos a ella. Como vamos a acceder vía web, añadimos un extremo HTTP que mediante el protocolo TCP, conecte nuestro puerto privado 8000 (puerto del que está escuchando nuestra aplicación) con un puerto público 80 (puerto al que mandará la respuesta de la aplicación y del que escucharán los navegadores por defecto).
+Para poder probar la aplicación, primero necesitamos añadir un extremo a la máquina virtual que nos permita conectarnos a ella. Como vamos a acceder vía web, añadimos un extremo HTTP que mediante el protocolo TCP, conecte nuestro puerto privado 8000 (puerto del que está escuchando nuestra aplicación) con un puerto público 80 (puerto al que mandará la respuesta de la aplicación y del que escucharán los navegadores por defecto). Comprobamos también que dicho extremo se ha creado correctamente.
+
+```
+azure vm endpoint create -n http asdfteam 80 8000
+azure vm endpoint list asdfteam
+```
 
 ![p04s04_img09](imagenes/p04s04_img09.png)
 
