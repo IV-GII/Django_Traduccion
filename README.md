@@ -325,7 +325,7 @@ Como el proyecto tiene diferentes versiones, durante el desarrollo hemos ido cre
 
 Las principales herramientas que hemos utilizado a la hora de realizar el grueso de la aplicación web han sido **Bootstrap** y **Django**. Con **Bootstrap** se ha realizado toda la parte referida al diseño visual de la web y con **Django** sus distintas funcionalidades. 
 
-**Twitter Bootstrap** es una colección de herramientas de software libre para la creación de sitios y aplicaciones web. Es el proyecto más popular en [GitHub](https://github.com/twbs/bootstrap) y es usado por la NASA y la MSNBC. **Bootstrap** es una herramienta muy útil para la realización del diseño gráfico de los sitios o aplicaciones web, ya que ofrece una alta compatibilidad con la mayoría de los dispositivos y navegadores web. 
+**Twitter Bootstrap** es una colección de herramientas de software libre para la creación de sitios y aplicaciones web. Podemos encontrarlo como proyecto en [GitHub](https://github.com/twbs/bootstrap) donde es muy popular. **Bootstrap** es una herramienta muy útil para la realización del diseño gráfico de los sitios o aplicaciones web, ya que ofrece una alta compatibilidad con la mayoría de los dispositivos y navegadores web. 
 
 Para empezar a utilizar **Bootstrap** debemos de llevar a cabo 3 pasos fundamentales:
 
@@ -397,29 +397,29 @@ Para su uso en esta aplicación lo hemos configurado de la siguiente forma:
  
 ### Explicación aplicación
 
-Inicialmente, accedemos a la dirección [web](asdfteam.cloudapp.net) como se muestra en la siguiente captura:
+Inicialmente, accedemos a la dirección [web](http://asdfteam.cloudapp.net) como se muestra en la siguiente captura:
 
-![p04s04_img11](imagenes/p04s04_img11.png)
+![p04s11_img01](imagenes/p04s11_img01.png)
  
 Como podemos observar, la página principal, nos muestra la información de la empresa y a parte, nos da la opción de loguearnos con una cuenta de un usuario ya existente o bien de registrarnos para poder acceder a los contenidos de la página.
 
 Si no estamos registrados, prodecemos a registrarnos pulsando el botón **Register** el cual nos llevará a otra página donde encontraremos un pequeño formulario de ingreso en el cual se nos pide nombre de usuario, contraseña y correo principalmente.
 
-![p04s04_img12](imagenes/p04s04_img12.png)
+![p04s11_img02](imagenes/p04s11_img02.png)
 
 Si estamos registrados basta con loguearnos y acceder a la página. Si olvidamos nuestra contraseña se nos da la opción de por medio de un formulario en el que se inserta nuestro correo, restablecer la contraseña.
 
-![p04s04_img19](imagenes/p04s04_img19.png)
+![p04s11_img03](imagenes/p04s11_img03.png)
 
 Una vez realizado lo anterior, nos lleva a la página principal donde se nos da la bienvenida seguido de nuestro nombre de usuario y la posiblilidad de cerrar sesión (arriba a la derecha) y la opción de subir ficheros (arriba a la izquierda).
 
-![p04s04_img13](imagenes/p04s04_img13.png)
+![p04s11_img04](imagenes/p04s11_img04.png)
 
-Si le pulsamos a la opción de subir ficheros, nos sale que no hay ningún fichero subido si no somos el administrador, que en ese caso veríamos todos los ficheros de todos los usuarios registrados; y nos da la posibilidad de subir alguno como muestran las siguientes capturas:
+Si pulsamos a la opción de subir ficheros, nos sale que no hay ningún fichero subido si no somos el administrador, que en ese caso veríamos todos los ficheros de todos los usuarios registrados; y nos da la posibilidad de subir alguno como muestran las siguientes capturas:
 
-![p04s04_img14](imagenes/p04s04_img14.png)
+![p04s11_img05](imagenes/p04s11_img05.png)
 
-![p04s04_img15](imagenes/p04s04_img15.png)
+![p04s11_img06](imagenes/p04s11_img06.png)
 
 Una vez subido el archivo, se nos presentan tres opciones:
 
@@ -427,14 +427,16 @@ Una vez subido el archivo, se nos presentan tres opciones:
 * Enviarlo para su traducción.
 * Descargar el fichero.
 
-![p04s04_img16](imagenes/p04s04_img16.png)
+![p04s11_img07](imagenes/p04s11_img07.png)
 
 Tras realizar alguna de las opciones anteriores se nos mostrará un mensaje por pantalla. Por ejemplo, si mandamos el fichero a traducir nos mostrará lo siguiente:
 
- ![p04s04_img17](imagenes/p04s04_img17.png)
+![p04s11_img08](imagenes/p04s11_img08.png)
 
 Cuando terminemos el trabajo y decidamos abandonar la página, solo basta con pulsar **Sign Out** y se nos mostrará en pantalla si estamos seguros de cerrar la sesión.
 
-![p04s04_img18](imagenes/p04s04_img18.png)
+![p04s11_img09](imagenes/p04s11_img09.png)
 
+Con el archivo enviado para traducción, una vez el administrador entre en su correo, se encontrará un nuevo correo electrónico con una solicitud de traducción.
 
+![p04s11_img10](imagenes/p04s11_img10.png)
