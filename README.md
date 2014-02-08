@@ -26,7 +26,7 @@ El motivo de usar varias máquinas virtuales es que en un entorno real nunca se 
 
 La licencia bajo la que publicamos esta aplicación es GNU GPL v3, esto da permiso a cualquier persona u organización para realizar modificaciones sobre la misma, además de poder realizar copias y distribuir tanto la versión original como la modificada, pudiendo cobrar o no por ello, pero siempre permaneciendo el mismo como software libre. 
 
-Las licencias de herramientas a usar [Bootstrap](https://github.com/twbs/bootstrap/blob/master/LICENSE) bajo licencia MIT y [Django](https://github.com/django/django/blob/master/LICENSE) bajo Django Software Foundation, así como los módulos [Allauth](https://github.com/pennersr/django-allauth/blob/master/LICENSE) y [Filebaby](https://bitbucket.org/kelvinwong_ca/) bajos licencias propias del desarrollador y contribuidores, son compatibles con la licencia GNU GPL de nuestra aplicación por lo que podemos usarlos con la misma.
+Las licencias de herramientas a usar [Bootstrap](https://github.com/twbs/bootstrap/blob/master/LICENSE) bajo licencia MIT y [Django](https://github.com/django/django/blob/master/LICENSE) bajo Django Software Foundation, así como los módulos [Allauth](https://github.com/pennersr/django-allauth/blob/master/LICENSE) y [Filebaby](https://bitbucket.org/kelvinwong_ca/kelvinwong_ca_blogcode/src/48da11108f2a7051a164c023829353dfffcd5481/django_filefield_tutorial/uploadering/filebaby/?at=default) bajo licencias propias del desarrollador y contribuidores, son compatibles con la licencia GNU GPL de nuestra aplicación por lo que podemos usarlos con la misma.
 
 ### Aprovisionamiento servidor de pruebas
 
