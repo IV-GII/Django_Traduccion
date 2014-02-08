@@ -24,7 +24,9 @@ El motivo de usar varias máquinas virtuales es que en un entorno real nunca se 
 
 ### Licencia
 
-[Explicación sobre porque se ha escogido esta licencia.]
+La licencia bajo la que publicamos esta aplicación es GNU GPL v3, esto da permiso a cualquier persona u organización para realizar modificaciones sobre la misma, además de poder realizar copias y distribuir tanto la versión original como la modificada, pudiendo cobrar o no por ello, pero siempre permaneciendo el mismo como software libre. 
+
+Las licencias de herramientas a usar [Bootstrap](https://github.com/twbs/bootstrap/blob/master/LICENSE) bajo licencia MIT y [Django](https://github.com/django/django/blob/master/LICENSE) bajo Django Software Foundation, así como los módulos [Allauth](https://github.com/pennersr/django-allauth/blob/master/LICENSE) y [Filebaby](https://bitbucket.org/kelvinwong_ca/) bajos licencias propias del desarrollador y contribuidores, son compatibles con la licencia GNU GPL de nuestra aplicación por lo que podemos usarlos con la misma.
 
 ### Aprovisionamiento servidor de pruebas
 
@@ -368,10 +370,10 @@ Los elementos más importantes que hemos utilizado a la hora de hacer un buen di
 
 Para la realización de nuestra aplicación nos hemos basado básicamente en los siguientes paquetes de **Django**:
 
-* Allauth:
-* Filebaby: 
+* **Allauth**
+* **Filebaby**
 
-***Allauth*** es un package de Django que se usa para gestionar el registro y autenticación del usuario. En lo que a gestión de registro se refiere AllAuth nos permite creación de cuentas mediante un formulario simple enviando correo de verificación a la cuenta proporcionada para que no se creen cuentas de usuarios ilegítimos, recuperación de contraseñas perdidas mediante envío a la dirección de correo proporcionada en el registro y logueo de usuarios. Las contraseñas proporcionadas en el registro no se guardan en texto plano si no que se genera un hash que es el que se gestiona para su almacenamiento por lo que sólo el usuario conocerá el password evitando así usos fraudulentos de los datos de usuarios. Para su uso en esta aplicación lo hemos configurado de la siguiente forma:
+**[Allauth](http://www.intenct.nl/projects/django-allauth/)** es un package de Django que se usa para gestionar el registro y autenticación del usuario. En lo que a gestión de registro se refiere AllAuth nos permite creación de cuentas mediante un formulario simple enviando correo de verificación a la cuenta proporcionada para que no se creen cuentas de usuarios ilegítimos, recuperación de contraseñas perdidas mediante envío a la dirección de correo proporcionada en el registro y logueo de usuarios. Las contraseñas proporcionadas en el registro no se guardan en texto plano si no que se genera un hash que es el que se gestiona para su almacenamiento por lo que sólo el usuario conocerá el password evitando así usos fraudulentos de los datos de usuarios. Para su uso en esta aplicación lo hemos configurado de la siguiente forma:
 
 * Hemos añadido en ***settings.py*** lo siguiente:
 * En TEMPLATES_CONTEXT_PROCESSORS:
@@ -409,17 +411,10 @@ Para la realización de nuestra aplicación nos hemos basado básicamente en los
       url(r'^accounts/profile',views.index, name='index'),
       url(r'^accounts/', include('allauth.account.urls')),
 ```
-
-
-
-
-
-
-
-[Queda explicar Filebaby]
  
-***Filebaby*** es un módulo que nos proporciona Django para llevar a cabo la subida de ficheros por parte de los usuarios al servidor para su posterior traducción. Como otros tantos módulos que tiene este framework, su instalación es muy parecida a la del anterior módulo, es decir, una vez descargado indicamos que lo vamos a usar en la aplicación añadiendolo al fichero **settings.py:**
+**[Filebaby](http://www.kelvinwong.ca/tag/django-2/)** es un módulo que nos proporciona Django para llevar a cabo la subida de ficheros por parte de los usuarios al servidor para su posterior traducción. Como otros tantos módulos que tiene este framework, su instalación es muy parecida a la del anterior módulo, es decir, una vez descargado indicamos que lo vamos a usar en la aplicación añadiendolo al fichero **settings.py:**
 
+```
 INSTALLED_APPS = (
     .......,
     'allauth',
@@ -428,9 +423,11 @@ INSTALLED_APPS = (
     'filebaby',
 	........;
 )
+```
 
 Lo siguiente a modificar es el archivo **urls.py** principal de la aplicación para que sepa donde debe redirigirse a la hora de querer acceder a este lugar:
 
+```
 urlpatterns = patterns('',
       #url(r'^accounts/profile/', "profile"),
       url(r'^$', views.index, name='index'),
@@ -438,13 +435,17 @@ urlpatterns = patterns('',
       url(r'^files/', include('filebaby.urls')),
 	  ..........,
 )
+```
 
 En cuanto a la arquitectura, sigue el patrón MVT como todo módulo de Django que se precie. El modelo de dicho paquete está formado por una sola estructura de datos, con un campo para el fichero en sí a tratar y otro para encriptarlo (md5), de manera que no lo puedan modificar. En la vista tenemos principalmente tres clases; la que se encarga de listar todos los ficheros que se ha subido (**class FileListView**), la encargada de mostrar el formulario para poder seleccionar el fichero a subir (**class FileAddView**) y la que lo sube y almacena en el directorio del servidor (**FileAddHashedView**).
 
 Dicho directorio de almacenamiento se indica en el fichero **settings:**
 
+```
 MEDIA_ROOT = os.path.join(BASE_DIR, 'userfiles/')
+```
 
+### Explicación aplicación
 
 Inicialmente, accedemos a la dirección [web](http://asdfteam.cloudapp.net) como se muestra en la siguiente captura:
 
