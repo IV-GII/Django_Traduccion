@@ -347,8 +347,6 @@ Como el proyecto tiene diferentes versiones, durante el desarrollo hemos ido cre
 
 ### Configuraciones y módulos 
 
-[Añadir descripción de las configuraciones más importantes realizadas, tipo lo que se puso en la presentación. Poner algo sobre los módulos usados y de donde descargarlos y lo que se ocurra más.]
-
 Las principales herramientas que hemos utilizado a la hora de realizar el grueso de la aplicación web han sido **Bootstrap** y **Django**. Con **Bootstrap** se ha realizado toda la parte referida al diseño visual de la web y con **Django** sus distintas funcionalidades. 
 
 **Twitter Bootstrap** es una colección de herramientas de software libre para la creación de sitios y aplicaciones web. Podemos encontrarlo como proyecto en [GitHub](https://github.com/twbs/bootstrap) donde es muy popular. **Bootstrap** es una herramienta muy útil para la realización del diseño gráfico de los sitios o aplicaciones web, ya que ofrece una alta compatibilidad con la mayoría de los dispositivos y navegadores web. 
