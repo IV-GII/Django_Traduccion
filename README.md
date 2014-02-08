@@ -418,7 +418,33 @@ Para la realización de nuestra aplicación nos hemos basado básicamente en los
 
 [Queda explicar Filebaby]
  
-### Explicación aplicación
+***Filebaby*** es un módulo que nos proporciona Django para llevar a cabo la subida de ficheros por parte de los usuarios al servidor para su posterior traducción. Como otros tantos módulos que tiene este framework, su instalación es muy parecida a la del anterior módulo, es decir, una vez descargado indicamos que lo vamos a usar en la aplicación añadiendolo al fichero **settings.py:**
+
+INSTALLED_APPS = (
+    .......,
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'filebaby',
+	........;
+)
+
+Lo siguiente a modificar es el archivo **urls.py** principal de la aplicación para que sepa donde debe redirigirse a la hora de querer acceder a este lugar:
+
+urlpatterns = patterns('',
+      #url(r'^accounts/profile/', "profile"),
+      url(r'^$', views.index, name='index'),
+	  ..........,
+      url(r'^files/', include('filebaby.urls')),
+	  ..........,
+)
+
+En cuanto a la arquitectura, sigue el patrón MVT como todo módulo de Django que se precie. El modelo de dicho paquete está formado por una sola estructura de datos, con un campo para el fichero en sí a tratar y otro para encriptarlo (md5), de manera que no lo puedan modificar. En la vista tenemos principalmente tres clases; la que se encarga de listar todos los ficheros que se ha subido (**class FileListView**), la encargada de mostrar el formulario para poder seleccionar el fichero a subir (**class FileAddView**) y la que lo sube y almacena en el directorio del servidor (**FileAddHashedView**).
+
+Dicho directorio de almacenamiento se indica en el fichero **settings:**
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'userfiles/')
+
 
 Inicialmente, accedemos a la dirección [web](http://asdfteam.cloudapp.net) como se muestra en la siguiente captura:
 
